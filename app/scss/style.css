@@ -14,143 +14,14 @@
             padding: 0px;
         }
         
-        
-        
-        /* Recomendaciones Cuadrícula */
-        
-        
-        .cuadribody {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            background-color: #ffffff;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-gap: 10px;
-            padding: 10px;
-            background-color: #ffffff;
-        }
-
-        @media (min-width: 880px) {
-            .grid-container {
-              grid-template-columns: repeat(2, 1fr); /* Two columns for screens >= 600px */
-            }
-          }
-        
-        .publi-card {
-            width: 400px;
-            background-color: white;
-            border-radius: 0 10px 10px 10px;
-            overflow: visible;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-            border: 1px solid #57adff;
-            padding: 5px;
-            margin: 10px;
-        }
-        .publi-header {
-            background-color: #57adff;
-            color: white;
-            padding: 10px 15px;
-            font-size: 14px;
-            font-weight: bold;
-            display: inline-block;
-            position: relative;
-            left: -5px;
-            top: -5px;
-        }
-        .publi-content {
-            padding: 20px;
-        }
-        .publi-title {
-            font-family: Merriweather;
-            font-size: 28px;
-            font-weight: bolder;
-            margin-bottom: 10px;
-        }
-        .publi-subtitle {
-            font-family: Titillium Web;
-            color: #57adff;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        .publi-text {
-            font-family: Titillium Web;
-            font-size: 12px;
-            color: #333;
-            line-height: 1.4;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .publi-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: #666;
-        }
-        .publi-recommendation {
-            display: flex;
-            align-items: center;
-        }
-        .publi-recommendation img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-        .publi-time {
-            font-family: Titillium Web;
-            font-size: 12px;
-            margin-top: 4px;
-            margin-bottom: 15px;
-            display: inline-block;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #666666;
-        }
-        .publi-badge {
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            background-color: #57adff;
-            color: white;
-            width: 40px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 24px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        .recomienda-titulo{
-            font-family: Titillium Web;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #57adff;
-            font-size: 12px;
-        }
-        .recomienda-recomendador{
-            font-family: Merriweather;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        
         /* Header Styles */
         
         .header {
             display: flex;
-            padding: 20px 30px;
+            padding: min(8vw,20px) min(4vw,30px);
             background-color: #ffffff;
-            z-index: 1000;
-            justify-content: space-between; /* Distribute space between items */
-            align-items: center; /* Align items vertically in the center */
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
@@ -163,8 +34,9 @@
             align-items: center;
         }
 
-        .logo a {
-            align-items: center;
+        .logo img {
+            width: min(100vw, 100%);
+            height: auto;
         }
 
         .ttkk {
@@ -204,8 +76,181 @@
             border-bottom: #bbbbbb 1px solid;
             height: 8px;
             width: 880px;
-            margin-bottom: 20px;
         }
+        
+        @media (max-width: 580px) {
+            .ttkk {
+                display: none;
+            }
+
+            .header-links {
+                display: none;
+            }
+        }
+        
+        /* Recomendaciones Cuadrícula */
+        
+        
+        .cuadribody {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            background-color: #ffffff;
+        }
+        .grid-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 0 20px;
+            justify-content: center;
+        }
+
+        @media (min-width: 880px) {
+            .grid-container {
+              flex-direction: row;
+            }
+          }
+        
+        .column {
+            flex: 1;
+        }
+
+        .publi-card {
+            width: 400px;
+            height: auto;
+            background-color: white;
+            border-radius: 0 10px 10px 10px;
+            overflow: visible;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 1px solid #57adff;
+            padding: 5px;
+            margin: 20px 20px 0 0;
+            cursor: pointer; /* Makes the card clickable */
+            transition: background-color 0.3s ease; /* Smooth transition */
+
+        }
+
+        .publi-card:hover {
+            background-color: #daf3ff; /* Very light shade of blue on hover */
+        }
+
+        @media (max-width: 470px) {
+            .publi-card {
+                width: max(90%,300px);
+            }
+        }
+
+        /* When clicked, add these styles */
+            .publi-card.clicked .publi-title,
+            .publi-card.clicked .publi-subtitle {
+                text-decoration: line-through; /* Strike-through effect */
+        }
+
+        .publi-card.clicked .publi-text {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+/* Initially, set p max-height to auto so it can collapse when clicked */
+        .publi-card .publi-text {
+            max-height: 1000px;
+            transition: max-height 0.5s ease;
+        }
+
+        .publi-header {
+            background-color: #57adff;
+            color: white;
+            font-family: Titillium Web;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            left: -5px;
+            top: -5px;
+        }
+
+        .publi-badge {
+            font-family: Titillium Web;
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background-color: #57adff;
+            color: white;
+            width: 40px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .publi-content {
+            padding: 20px;
+        }
+        .publi-title {
+            font-family: Merriweather;
+            font-size: 32px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+        }
+        .publi-subtitle {
+            font-family: Titillium Web;
+            color: #57adff;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .publi-text {
+            font-family: Titillium Web;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .publi-recommendation {
+            display: flex;
+            align-items: center;
+        }
+        .publi-recommendation img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .publi-time {
+            font-family: Titillium Web;
+            font-size: 16px;
+            margin-top: 4px;
+            margin-bottom: 15px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #666666;
+        }
+        
+        .recomienda-titulo{
+            font-family: Titillium Web;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #57adff;
+            font-size: 12px;
+        }
+        .recomienda-recomendador{
+            font-family: Merriweather;
+            font-size: 18px;
+            font-weight: bold;
+            color: #666;
+        }
+        
 
 /* No entres a twitter */
 
@@ -213,19 +258,19 @@
             background-color: #57adff;
             display: flex;
             justify-content: center;
-            padding: 40px;
+            padding: 60px min(60px, 5vw);
 
         }
 
         .containertw {
             display: flex;
-            max-width: 800px;
+            max-width: 780px;
 
         }
 
         .notw-header {
             display: flex;
-            max-width: 840px;
+            max-width: 780px;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
@@ -233,11 +278,11 @@
         }
         .notw-header h1 {
             font-family: Merriweather;
-            font-size: 40px;
+            font-size: min(10vw, 40px);
             font-weight: bolder;
             color: #ffffff;
             margin: 0px 20px 0px 0px;
-            line-height: 41px;
+            line-height: min(10vw, 41px);
             
         }
 
@@ -246,6 +291,32 @@
             width: 60px;
             margin: 0 20px 0 0;
             flex-shrink: 0;
+        }
+
+        @media (max-width: 580px) {
+            .logotw {
+                display: none;
+            }
+        }
+
+        .publi-recommendation-tw {
+            display: flex;
+            align-items: center;
+        }
+
+        .publi-recommendation-tw img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        @media (max-width: 460px) {
+
+            .publi-recommendation-tw img {
+                display: none;
+            }
+            
         }
 
         .curador-tw {
@@ -269,7 +340,7 @@
         }
 
         .textotematw h1{
-            font-size: 20px;
+            font-size: 24px;
             text-transform: uppercase;
             font-weight: bold;
             
@@ -277,11 +348,11 @@
 
         .textotematw h2{
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: 16px;
         }
 
         .textotematw p{
-            font-size: 12px;
+            font-size: 16px;
         }
 
         .checkboxtw {
@@ -293,4 +364,321 @@
             flex-grow: 0;
             margin: 20px;
             
+        }
+
+/* Videos */
+
+        .bg-videos {
+            background-color: #333;
+            justify-content: center;
+            padding: 20px 0 40px 0;
+            display: flex;
+            z-index: -100;
+            
+
+        }
+
+        .supervids {
+            max-width: 840px;
+            justify-content: center;
+
+        }
+
+        .headervids {
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .headervids img{
+            padding-right: 16px;
+            margin-left: 12px;
+        }
+
+        .headervids h1 {
+            font-family: Merriweather;
+            font-size: 40px;
+            font-weight: bolder;
+            color: #ffffff;
+            margin-right: 12px;
+            margin-block-end: 5px;
+            margin-block-start: 5px;
+        }
+
+        .headervids p {
+            font-family: Titillium Web;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-right: 12px;
+            margin-block-end: 5px;
+            margin-block-start: 16px;
+        }
+
+        @media (max-width:400px) {
+            .headervids p {
+                display: none;
+            }
+        }
+    
+        .lineavidheader {
+            border-bottom: #57adff solid 2px;
+            margin-bottom: 20px;
+        }
+
+        .containervids {
+            display: grid;
+            max-width: 840px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 20px;
+            justify-content: center;
+            justify-items: center;
+        }
+
+        @media (max-width:880px) {
+            .containervids {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        .vids {
+            min-width: 250px;
+            max-width: min(86vw, 400px);
+            height: 500px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .bg-container-vids {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-vids {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: gray;
+            transition: all 0.5s ease-in-out;
+            background-image: url("../../bg-vids.png");
+            background-size: cover;   /* Makes the image cover the entire area */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay color */
+            background-blend-mode: overlay;
+            z-index: -1;
+        }
+
+        .vids:hover .bg-vids {
+            filter: saturate(0.2);
+            transform: scale(1.1);
+        }
+
+        .vids h1 {
+            font-family: Merriweather;
+            font-size: 32px;
+            font-weight: bolder;
+            color: #ffffff;
+            z-index: 1;
+            margin-block-end: 5px;
+        }
+
+        .lineavid {
+            border-bottom: #ffffff solid 1px;
+            z-index: 1;
+        }
+
+        .vids p {
+            font-family: Titillium Web;
+            font-size: 20px;
+            color: #ffffff;
+            z-index: 1;
+            margin-block-start: 5px;
+        
+        }
+
+        .recovids-cont {
+            display: flex;
+            z-index: 1;
+        }
+
+        #recovids {
+            color: #ffffff;
+            font-size: 15px;
+            padding: 2px 0px;
+        }
+
+        .vid-badge {
+            position: absolute;
+            top: -7px;
+            right: 16px;
+            background-color: #57adff;
+            color: white;
+            width: 40px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: "Titillium Web";
+            z-index: 10;
+        }
+
+/* ALO */
+
+        .bg-alo {
+            background-color: #e2e2e2;
+            justify-content: center;
+            padding: 40px 0 40px 0;
+            display: flex;
+            z-index: -100;
+        }
+
+        .container-alo {
+            max-width: 840px;
+            position: relative;
+        }
+
+        .row-alo-header {
+            background-color: #57adff;
+            display: flex;
+            height: 190px;
+            padding-left: 4%;
+            padding-bottom: 3%;
+            padding-right: 4%;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .row-alo-header h1 {
+            font-family: Merriweather;
+            color: white;
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .row-alo {
+            height:220px;
+            display: flex;
+            background-color: #f0f0f0;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+
+        }
+
+        .column-alo-pic {
+            background-image: url(/libro.jpg);
+            background-size: cover;
+            background-position: center;
+            flex: 1;
+            height: 220px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .column-alo-txt {
+            flex: 3;
+            font-family: 'titillium web';
+            padding: 4%;
+        
+        }
+
+        .column-alo-txt h1 {
+            font-size: 28px;
+            font-weight: bolder;
+            margin: 0;
+            color: #000000;
+            font-family: 'Merriweather';
+        }
+
+        .column-alo-txt h2 {
+            font-size: 20px;
+            color: #555;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .column-alo-txt p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .column-alo-ico {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .column-alo-ico img {
+            width: 80px;
+            height: 80px;
+            margin: 20px;
+        }
+
+        .alo-badge {
+            position: absolute;
+            top: -7px;
+            right: 5%;
+            background-color: #ffffff;
+            color: #57adff;
+            width: 50px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 32px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: "Titillium Web";
+            z-index: 10;
+        }
+
+        .curador-alo {
+            font-family: Titillium Web;
+            text-transform: uppercase;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .recomendador-alo{
+            font-family: Merriweather;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .publi-recommendation-alo {
+            display: flex;
+            align-items: center;
+        }
+        .publi-recommendation-alo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
         }
