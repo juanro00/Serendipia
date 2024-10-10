@@ -366,6 +366,28 @@
             
         }
 
+        /* Estilos para aplicar strikethrough */
+        .textotematw.striked h1,
+        .textotematw.striked p {
+            text-decoration: line-through;
+        }
+
+/* Añadimos el SVG de checkmark al checkbox cuando esté activado */
+        .checkboxtw.checked::after {
+            content: url('/check-mark.svg'); /* Reemplaza con la ruta a tu svg */
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+
+
+        
 /* Videos */
 
         .bg-videos {
@@ -588,13 +610,19 @@
         }
 
         .column-alo-pic {
-            background-image: url(/libro.jpg);
-            background-size: cover;
-            background-position: center;
+            position: relative;
             flex: 1;
-            height: 220px;
-            flex-shrink: 0;
-            overflow: hidden;
+            width: 100%;
+            height: 220px; /* Set the desired height of the div */
+            overflow: hidden; /* Hide overflow to ensure the image doesn't go beyond the div */
+        }
+
+        .column-alo-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Makes the image behave like background-size: cover */
+            object-position: center; /* Centers the image inside the div */
+            display: block;
         }
 
         .column-alo-txt {
