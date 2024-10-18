@@ -77,3 +77,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+
+
+// Función para manejar el clic en las tarjetas y guardar el estado en localStorage
+document.querySelectorAll('.vids').forEach((vid, index) => {
+    // Restaurar el estado desde localStorage
+    const isClicked = localStorage.getItem(`vid-${index}`);
+    if (isClicked === 'true') {
+        vid.classList.add('clicked');
+    }
+
+    // Añadir evento de clic
+    vid.addEventListener('click', function () {
+        this.classList.toggle('clicked');
+
+        // Guardar el estado en localStorage
+        const clicked = this.classList.contains('clicked');
+        localStorage.setItem(`vid-${index}`, clicked);
+    });
+});

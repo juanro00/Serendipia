@@ -466,6 +466,7 @@
         }
 
         .vids {
+            position: relative;
             min-width: 250px;
             max-width: min(86vw, 400px);
             height: 500px;
@@ -478,7 +479,16 @@
             border-radius: 10px;
             z-index: 1;
         }
-
+        
+        .vid-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+        
         .bg-container-vids {
             width: 100%;
             height: 100%;
@@ -489,27 +499,69 @@
             overflow: hidden;
             z-index: 0;
         }
-
-        .bg-vids {
+        
+        .vids {
+            position: relative;
+            min-width: 250px;
+            max-width: min(86vw, 400px);
+            height: 500px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: visible;
+            z-index: 1;
+        }
+        
+        .vid-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            position: absolute; /* Lo hace cubrir todo el contenedor */
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            z-index: 2; /* Por encima del fondo */
+        }
+        
+        .bg-container-vids {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
             position: absolute;
             top: 0;
             left: 0;
-            background-color: gray;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .bg-vids {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: all 0.5s ease-in-out;
-            background-image: url("../../bg-vids.png");
-            background-size: cover;   /* Makes the image cover the entire area */
-            background-position: center; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay color */
-            background-blend-mode: overlay;
+            filter: saturate(1);
             z-index: -1;
+        }
+        
+        .bg-container-vids::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45); /* Negro con 45% de opacidad */
+            z-index: 1;
+            pointer-events: none;
         }
 
         .vids:hover .bg-vids {
-            filter: saturate(0.2);
-            transform: scale(1.1);
+            filter: saturate(0.2); /* Cambia la saturación al hacer hover */
+            transform: scale(1.1); /* Agranda la imagen */
         }
 
         .vids h1 {
@@ -563,6 +615,48 @@
             font-family: "Titillium Web";
             z-index: 10;
         }
+
+        .vids.clicked .bg-container-vids::after {
+            background-color: rgba(0, 0, 0, 0.45); /* Sin opacidad */
+        }
+        
+        /* Triángulo en la esquina inferior derecha rotado 90 grados */
+        .vids.clicked::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-top: 80px solid #57adff; /* Triángulo de color azul */
+            transform: rotate(90deg); /* Rotar 90 grados */
+            z-index: 3; /* Encima del fondo pero debajo del texto */
+        }
+        
+        /* Checkmark dentro del triángulo */
+        .vids.clicked::before {
+            content: url('/vid-checkmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 4; /* Encima del triángulo */
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Asegurar que el contenido (h1, p, etc.) esté por encima del triángulo */
+        .vids h1, .vids p, .lineavid, .recovids-cont {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .vids.clicked .bg-vids {
+            transform: none; /* Elimina el zoom */
+            filter: saturate(0.0);
+        }
+
+
 
 /* ALO */
 
