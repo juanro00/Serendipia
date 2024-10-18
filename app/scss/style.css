@@ -644,7 +644,7 @@
             z-index: 4; /* Above the triangle */
             width: 20px; /* Set the width */
             height: 20px; /* Set the height */
-            background-image: url('/vidcheckmark.svg'); /* Path to your SVG */
+            background-image: url('vidcheckmark.svg'); /* Path to your SVG */
             background-size: contain; /* Ensure the image fits */
             background-repeat: no-repeat; /* Prevent repeating */
         }
