@@ -636,7 +636,7 @@
         
         /* Checkmark dentro del triángulo */
         .vids.clicked::before {
-            content: url('/vid-checkmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
+            content: url('vid-checkmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
             position: absolute;
             bottom: 15px;
             right: 15px;
