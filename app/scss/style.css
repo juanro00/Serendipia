@@ -286,6 +286,7 @@
             
         }
 
+
         .logotw {
             height: 60px;
             width: 60px;
@@ -337,6 +338,10 @@
             font-family: Titillium Web;
             color: #ffffff;
             margin-right: 20px;
+        }
+
+        .textotematw a{
+            color: #ffffff;
         }
 
         .textotematw h1{
@@ -636,17 +641,13 @@
         
         /* Checkmark dentro del triángulo */
         .vids.clicked::before {
-            content: ""; /* Ensure this is still set */
-            display: block; /* Ensures the pseudo-element is rendered */
+            content: url('/vidcheckmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
             position: absolute;
             bottom: 15px;
             right: 15px;
-            z-index: 4; /* Above the triangle */
-            width: 20px; /* Set the width */
-            height: 20px; /* Set the height */
-            background-image: url('vidcheckmark.svg'); /* Path to your SVG */
-            background-size: contain; /* Ensure the image fits */
-            background-repeat: no-repeat; /* Prevent repeating */
+            z-index: 4; /* Encima del triángulo */
+            width: 20px;
+            height: 20px;
         }
         
         /* Asegurar que el contenido (h1, p, etc.) esté por encima del triángulo */
