@@ -636,14 +636,15 @@
         
         /* Checkmark dentro del triángulo */
         .vids.clicked::before {
-            content: ""; /* Must be empty for the pseudo-element to display */
+            content: ""; /* Ensure this is still set */
+            display: block; /* Ensures the pseudo-element is rendered */
             position: absolute;
             bottom: 15px;
             right: 15px;
             z-index: 4; /* Above the triangle */
             width: 20px; /* Set the width */
             height: 20px; /* Set the height */
-            background-image: url('vidcheckmark.svg'); /* Path to your SVG */
+            background-image: url('/vidcheckmark.svg'); /* Path to your SVG */
             background-size: contain; /* Ensure the image fits */
             background-repeat: no-repeat; /* Prevent repeating */
         }
