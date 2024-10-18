@@ -636,13 +636,16 @@
         
         /* Checkmark dentro del triángulo */
         .vids.clicked::before {
-            content: url('vidcheckmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
+            content: ""; /* Must be empty for the pseudo-element to display */
             position: absolute;
             bottom: 15px;
             right: 15px;
-            z-index: 4; /* Encima del triángulo */
-            width: 20px;
-            height: 20px;
+            z-index: 4; /* Above the triangle */
+            width: 20px; /* Set the width */
+            height: 20px; /* Set the height */
+            background-image: url('vidcheckmark.svg'); /* Path to your SVG */
+            background-size: contain; /* Ensure the image fits */
+            background-repeat: no-repeat; /* Prevent repeating */
         }
         
         /* Asegurar que el contenido (h1, p, etc.) esté por encima del triángulo */
