@@ -379,7 +379,7 @@
 
 /* Añadimos el SVG de checkmark al checkbox cuando esté activado */
         .checkboxtw.checked::after {
-            content: url('check-mark.svg'); /* Reemplaza con la ruta a tu svg */
+            content: url('/check-mark.svg'); /* Reemplaza con la ruta a tu svg */
             display: block;
             width: 20px;
             height: 20px;
