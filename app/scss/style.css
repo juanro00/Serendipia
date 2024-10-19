@@ -641,7 +641,7 @@
         
         /* Checkmark dentro del triángulo */
         .vids.clicked::before {
-            content: url('./vidcheckmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
+            content: url('https://raw.githubusercontent.com/juanro00/Serendipia/cc77b3d52b903ff06f143b4701166a837c5a622d/vidcheckmark.svg'); /* Ruta de tu archivo SVG con el checkmark */
             position: absolute;
             bottom: 15px;
             right: 15px;
