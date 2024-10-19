@@ -83,6 +83,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Función para manejar el clic en las tarjetas y guardar el estado en localStorage
 document.querySelectorAll('.vids').forEach((vid, index) => {
+    // Inicializa el estado en localStorage solo si no está configurado
+    if (localStorage.getItem(`vid-${index}`) === null) {
+        localStorage.setItem(`vid-${index}`, 'false'); // Inicializa como no clickeado
+    }
+
     // Restaurar el estado desde localStorage
     const isClicked = localStorage.getItem(`vid-${index}`);
     if (isClicked === 'true') {
